@@ -17,7 +17,8 @@ module Backend
       g.test_framework :rspec,
                        fixtures: false,
                        view_specs: false, # ビューファイル用のスペックを作成しない
-                       helper_specs: false # ヘルパーファイル用のスペックを作成しない
+                       helper_specs: false, # ヘルパーファイル用のスペックを作成しない
+                       routing_specs: false
     end
 
     # Configuration for the application, engines, and railties goes here.
