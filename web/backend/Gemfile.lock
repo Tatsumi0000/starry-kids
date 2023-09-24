@@ -174,9 +174,6 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
-    spring (4.1.1)
-    spring-commands-rspec (1.0.4)
-      spring (>= 0.9.1)
     stringio (3.0.8)
     thor (1.2.2)
     timeout (0.4.0)
@@ -199,7 +196,6 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.8)
   rspec-rails
-  spring-commands-rspec
   tzinfo-data
 
 RUBY VERSION
