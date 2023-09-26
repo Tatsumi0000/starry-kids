@@ -17,6 +17,9 @@ gem 'jbuilder'
 
 # numpyみたいなやつ。月の計算のために使う
 gem 'numo-narray'
+# 画像を変換するために使う
+gem 'mini_magick'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
