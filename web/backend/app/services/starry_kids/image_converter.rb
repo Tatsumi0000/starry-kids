@@ -3,8 +3,8 @@ require 'numo/narray'
 
 module StarryKids
   class ImageConverter
-    def initialize(text, font_size)
-      @text = text
+
+    def initialize(font_size = 16)
       @font_size = font_size
       @image = MiniMagick::Image.open('data/images/dummy.png')
       @font_path = 'data/fonts/NotoSansJP-Regular.ttf'
