@@ -1,7 +1,7 @@
 module StarryKids
-  class MoonConverter
+  class ConvertImageToMoon
     class << self
-      
+
     end
 
   end

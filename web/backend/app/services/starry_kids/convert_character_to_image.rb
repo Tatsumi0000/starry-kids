@@ -2,7 +2,7 @@ require 'mini_magick'
 require 'numo/narray'
 
 module StarryKids
-  class ImageConverter
+  class ConvertCharacterToImage
 
     def initialize(font_size = 16)
       @font_size = font_size
