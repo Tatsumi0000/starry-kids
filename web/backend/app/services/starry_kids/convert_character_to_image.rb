@@ -3,20 +3,22 @@ require 'numo/narray'
 
 module StarryKids
   class ConvertCharacterToImage
-
-    def initialize(font_size = 16)
+    def initialize(font_size = 160)
       @font_size = font_size
       @image = MiniMagick::Image.open('data/images/dummy.png')
       @font_path = 'data/fonts/NotoSansJP-Regular.ttf'
     end
 
     # 文字を画像に変換する
+    # ひらがなやアルファベットを想定する
+    # 感じだと16*16では表現できない可能性がある
     def generate_text_image(character)
       @image.combine_options do |b|
         b.gravity 'center'
         b.fill 'black'
         b.pointsize @font_size
         b.font @font_path
+        # 画像サイズは4の倍数にしないときれいにならない可能性がある
         b.extent "#{@font_size}x#{@font_size}"
         b.annotate '+0+0', character
         b.colorspace 'Gray'
