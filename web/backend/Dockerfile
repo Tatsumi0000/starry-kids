@@ -1,7 +1,7 @@
 FROM rubylang/ruby:3.2.0-dev-jammy
 RUN apt update && \
     apt -y upgrade && \ 
-    apt -y install libyaml-dev libmysqlclient-dev
+    apt -y install libyaml-dev libmysqlclient-dev imagemagick
 
 RUN gem update && \
     bundle config set path vendor/bundle
