@@ -18,6 +18,7 @@ module StarryKids
           row = 4 * i
           col = 4 * j
           max = -10_000
+          max_index = 0
 
           StarryKids::Moon.emoji.each_with_index do |moon, k|
             # 4*4の行列を作って、月絵文字とのアダマール積を計算
@@ -26,14 +27,12 @@ module StarryKids
               max_index = k
               max = hadamard_product.sum
             end
-            moon_array << StarryKids::Moon.convert_to_emoji(max_index)
           end
-          moon_array << "\n"
+          moon_array << StarryKids::Moon.convert_to_emoji(max_index)
         end
+        moon_array << "\n"
       end
-      moon_array.each do |emoji|
-        print emoji
-      end
+      moon_array.each { |emoji| print emoji }
     end
   end
 end
