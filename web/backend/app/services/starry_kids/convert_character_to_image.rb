@@ -3,7 +3,7 @@ require 'numo/narray'
 
 module StarryKids
   class ConvertCharacterToImage
-    def initialize(font_size = 160)
+    def initialize(font_size = 80)
       base_file_path = File.dirname(__FILE__)
       @font_size = font_size
       @image = MiniMagick::Image.open(File.join(base_file_path, './data/images/dummy.png'))
