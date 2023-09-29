@@ -4,14 +4,15 @@ require 'numo/narray'
 module StarryKids
   class ConvertCharacterToImage
     def initialize(font_size = 160)
+      base_file_path = File.dirname(__FILE__)
       @font_size = font_size
-      @image = MiniMagick::Image.open('data/images/dummy.png')
-      @font_path = 'data/fonts/NotoSansJP-Regular.ttf'
+      @image = MiniMagick::Image.open(File.join(base_file_path, './data/images/dummy.png'))
+      @font_path = File.join(base_file_path, './data/fonts/NotoSansJP-Regular.ttf')
     end
 
     # 文字を画像に変換する
     # ひらがなやアルファベットを想定する
-    # 感じだと16*16では表現できない可能性がある
+    # 漢字だと16*16では表現できない可能性がある
     def generate_text_image(character)
       @image.combine_options do |b|
         b.gravity 'center'
@@ -26,8 +27,9 @@ module StarryKids
     end
 
     # 画像をグレイスケール画像に変換してピクセルの配列を返す
+    # @return [Array] グレースケール化したピクセルの配列
     def convert_to_graysclae_pixels
-      pixels = image.get_pixels
+      pixels = @image.get_pixels
       gray_scale = []
       pixels.each_with_index do |rgbs, i|
         gray_scale[i] = []
@@ -39,6 +41,13 @@ module StarryKids
         end
       end
       gray_scale
+    end
+
+    # -1 ~ 1.0の範囲に正規化する
+    # @param [Array] グレースケール化したピクセルの配列
+    # @return [Numo::Float] Numo::Floatの-1~1で正規化したピクセルの配列
+    def self.normalize(array)
+      (Numo::Int32.cast(array) / 128.0) - 1.0
     end
   end
 end
