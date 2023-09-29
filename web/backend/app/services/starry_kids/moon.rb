@@ -64,7 +64,7 @@ module StarryKids
           '🌗'
         when 6
           '🌖'
-        when 7
+        else
           '🌕'
         end
       end
