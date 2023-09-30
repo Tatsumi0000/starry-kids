@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'numo/narray'
 require_relative 'moon'
 require_relative 'convert_character_to_image'
@@ -27,6 +29,7 @@ module StarryKids
 
           StarryKids::Moon.emoji.each_with_index do |moon, k|
             # 4*4の行列を抜き出して、月絵文字とのアダマール積を計算
+            # 月絵文字とのアダマール積の合計が最大の月絵文字を選択する
             hadamard_product = normalize.slice(row...(row + 4), col...(col + 4)) * moon
             if hadamard_product.sum > max
               max_index = k
@@ -37,12 +40,12 @@ module StarryKids
         end
         moon_array << "\n"
       end
-      moon_array.each { |emoji| print emoji }
+      moon_array.each { |emoji| Rails.logger.debug emoji }
     end
   end
 end
 
-if $0 == __FILE__
+if $PROGRAM_NAME == __FILE__
   convert_image_to_moon = StarryKids::ConvertImageToMoon.new
-  convert_image_to_moon.call('A')
+  convert_image_to_moon.call('ぼ')
 end

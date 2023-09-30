@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mini_magick'
 require 'numo/narray'
 
@@ -37,7 +39,7 @@ module StarryKids
           # ITU-R Rec BT.709の計算式を使います。
           # これが人間の目にとって一番自然なグレースケール値になるみたいです。
           # https://qiita.com/yoya/items/96c36b069e74398796f3#cie-xyz-%E3%81%AE-y
-          gray_scale[i][j] = rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722
+          gray_scale[i][j] = (rgb[0] * 0.2126) + (rgb[1] * 0.7152) + (rgb[2] * 0.0722)
         end
       end
       gray_scale
@@ -52,7 +54,7 @@ module StarryKids
   end
 end
 
-if $0 == __FILE__
+if $PROGRAM_NAME == __FILE__
   moon = StarryKids::Moon
-  p moon.emoji
+  Rails.logger.debug moon.emoji
 end

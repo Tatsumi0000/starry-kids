@@ -1,0 +1,31 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+  - rubocop-factory_bot
+
+AllCops:
+  TargetRubyVersion: 3.1
+  Exclude:
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'lib/tasks/**/*'
+    - "db/schema.rb"
+    - 'bin/*'
+    - 'config/initializers/**/*'
+    - 'public/**/*'
+    - 'storage/**/*'
+    - 'log/**/*'
+    - 'tmp/**/*'
+    - 'openapi/**/*'
+  NewCops: enable
+
+Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 42 # rubygems.orgと同じ
+Metrics/MethodLength:
+  Enabled: false 
+Metrics/CyclomaticComplexity:
+  Enabled: false

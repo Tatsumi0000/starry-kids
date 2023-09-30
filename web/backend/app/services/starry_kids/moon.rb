@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'numo/narray'
 
 module StarryKids
@@ -72,7 +74,7 @@ module StarryKids
   end
 end
 
-if $0 == __FILE__
+if $PROGRAM_NAME == __FILE__
   moon = StarryKids::Moon
-  p moon.emoji
+  Rails.logger.debug moon.emoji
 end
