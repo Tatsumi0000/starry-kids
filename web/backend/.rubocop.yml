@@ -12,6 +12,7 @@ AllCops:
     - 'lib/tasks/**/*'
     - "db/schema.rb"
     - 'bin/*'
+    - 'spec/**/*'
     - 'config/initializers/**/*'
     - 'public/**/*'
     - 'storage/**/*'
@@ -28,4 +29,6 @@ Metrics/AbcSize:
 Metrics/MethodLength:
   Enabled: false 
 Metrics/CyclomaticComplexity:
+  Enabled: false
+rubocopRails/Output:
   Enabled: false
