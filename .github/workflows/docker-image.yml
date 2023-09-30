@@ -38,7 +38,7 @@ jobs:
         with:
           context: web/backend
           push: true
-          tags: "ghcr.io/${ github.repository }/backend:${{ github.sha }}"
+          tags: "ghcr.io/${{ github.repository }}/backend:${{ github.sha }}"
 
       # - if: steps.changes.outputs.frontend == 'true'
       - name: Frontend Image Build and push
