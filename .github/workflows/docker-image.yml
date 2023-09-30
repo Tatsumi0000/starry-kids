@@ -4,11 +4,6 @@ name: Push Docker image to GitHub Packages
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - "web/backend/Dockerfile"
-      - "web/frontend/Dockerfile"
   workflow_dispatch:
 
 jobs:
@@ -36,16 +31,16 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - if: steps.changes.outputs.backend == 'true'
-        name: Backend Image Build and push
+            #- if: steps.changes.outputs.backend == 'true'
+      - name: Backend Image Build and push
         uses: docker/build-push-action@v5
         with:
           context: web/backend
           push: true
           tags: "ghcr.io/tatsumi0000/starry-kids/backend:latest"
 
-      - if: steps.changes.outputs.frontend == 'true'
-        name: Frontend Image Build and push
+            #- if: steps.changes.outputs.frontend == 'true'
+      - name: Frontend Image Build and push
         uses: docker/build-push-action@v5
         with:
           context: web/frontend
