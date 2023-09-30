@@ -38,8 +38,7 @@ jobs:
         with:
           context: web/backend
           push: true
-          tags: ${{ github.sha }}
-          label: "ghcr.io/Tatsumi0000/StarryKids/backend"
+          tags: ghcr.io/${ GITHUB_REPOSITORY }/backend:${{ GITHUB_SHA }}
 
       # - if: steps.changes.outputs.frontend == 'true'
       - name: Frontend Image Build and push
@@ -47,5 +46,4 @@ jobs:
         with:
           context: web/frontend
           push: true
-          tags: ${{ github.sha }}
-          label: "ghcr.io/Tatsumi0000/StarryKids/frontend"
+          tags: ghcr.io/${{ GITHUB_REPOSITORY }}/frontend:${{ GITHUB_SHA }}
