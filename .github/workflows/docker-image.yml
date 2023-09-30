@@ -45,7 +45,7 @@ jobs:
       - name: Frontend Image Build and push
         uses: docker/build-push-action@v5
         with:
-          context: web/backend
+          context: web/frontend
           push: true
           tag: ${{ github.sha }}
           label: "ghcr.io/Tatsumi0000/StarryKids/frontend"
