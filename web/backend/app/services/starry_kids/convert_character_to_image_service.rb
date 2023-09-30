@@ -4,7 +4,7 @@ require 'mini_magick'
 require 'numo/narray'
 
 module StarryKids
-  class ConvertCharacterToImage
+  class ConvertCharacterToImageService
     def initialize(font_size = 80)
       base_file_path = File.dirname(__FILE__)
       @font_size = font_size
@@ -14,7 +14,6 @@ module StarryKids
 
     # 文字を画像に変換する
     # ひらがなやアルファベットを想定する
-    # 漢字だと16*16では表現できない可能性がある
     def generate_text_image(character)
       @image.combine_options do |b|
         b.gravity 'center'
@@ -52,9 +51,4 @@ module StarryKids
       (Numo::Int32.cast(array) / 128.0) - 1.0
     end
   end
-end
-
-if $PROGRAM_NAME == __FILE__
-  moon = StarryKids::Moon
-  Rails.logger.debug moon.emoji
 end

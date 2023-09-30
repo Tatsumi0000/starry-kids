@@ -2,12 +2,12 @@
 
 require 'numo/narray'
 require_relative 'moon'
-require_relative 'convert_character_to_image'
+require_relative 'convert_character_to_image_service'
 
 module StarryKids
-  class ConvertImageToMoon
+  class ConvertImageToMoonService
     def initialize
-      @convert_character_to_image = StarryKids::ConvertCharacterToImage.new
+      @convert_character_to_image = StarryKids::ConvertCharacterToImageService.new
     end
 
     # 文字→画像→月文字に変換する
@@ -17,7 +17,7 @@ module StarryKids
       moon_array = []
       @convert_character_to_image.generate_text_image(character)
       gray_scale_image = @convert_character_to_image.convert_to_graysclae_pixels
-      normalize = ConvertCharacterToImage.normalize(gray_scale_image)
+      normalize = ConvertCharacterToImageService.normalize(gray_scale_image)
       # 行数(shape[0])と列数(shape[1])を 1 / 4 した分だけ計算する。
       # 1 / 4 するのは4 * 4ピクセルを1文字の月で表現するため。
       (normalize.shape[0] / 4).times do |i|
@@ -40,12 +40,12 @@ module StarryKids
         end
         moon_array << "\n"
       end
-      moon_array.each { |emoji| Rails.logger.debug emoji }
+      moon_array.each { |emoji| print emoji }
     end
   end
 end
 
 if $PROGRAM_NAME == __FILE__
-  convert_image_to_moon = StarryKids::ConvertImageToMoon.new
-  convert_image_to_moon.call('ぼ')
+  convert_image_to_moon = StarryKids::ConvertImageToMoonService.new
+  convert_image_to_moon.call('ば')
 end
