@@ -38,7 +38,7 @@ jobs:
         with:
           context: web/backend
           push: true
-          tags: ghcr.io/${ GITHUB_REPOSITORY }/backend:${{ GITHUB_SHA }}
+          tags: "ghcr.io/${ GITHUB_REPOSITORY }/backend:${{ GITHUB_SHA }}"
 
       # - if: steps.changes.outputs.frontend == 'true'
       - name: Frontend Image Build and push
@@ -46,4 +46,4 @@ jobs:
         with:
           context: web/frontend
           push: true
-          tags: ghcr.io/${{ GITHUB_REPOSITORY }}/frontend:${{ GITHUB_SHA }}
+          tags: "ghcr.io/${{ GITHUB_REPOSITORY }}/frontend:${{ GITHUB_SHA }}"
