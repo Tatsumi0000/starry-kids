@@ -38,7 +38,7 @@ jobs:
         with:
           context: web/backend
           push: true
-          tag: ${{ github.sha }}
+          tags: ${{ github.sha }}
           label: "ghcr.io/Tatsumi0000/StarryKids/backend"
 
       # - if: steps.changes.outputs.frontend == 'true'
@@ -47,5 +47,5 @@ jobs:
         with:
           context: web/frontend
           push: true
-          tag: ${{ github.sha }}
+          tags: ${{ github.sha }}
           label: "ghcr.io/Tatsumi0000/StarryKids/frontend"
