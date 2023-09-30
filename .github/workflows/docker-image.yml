@@ -11,11 +11,11 @@ jobs:
   push_to_registry:
 
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
-    
+
       - uses: dorny/paths-filter@v2
         id: filter
         with:
@@ -32,21 +32,20 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - if: steps.changes.outputs.backend == 'true'
-        name: Backend Image Build and push 
+      # - if: steps.changes.outputs.backend == 'true'
+      - name: Backend Image Build and push
         uses: docker/build-push-action@v5
-        with: 
+        with:
           context: web/backend
           push: true
           tag: ${{ github.sha }}
           label: "ghcr.io/Tatsumi0000/StarryKids/backend"
-      
-      - if: steps.changes.outputs.frontend == 'true'
-        name: Frontend Image Build and push 
+
+      # - if: steps.changes.outputs.frontend == 'true'
+      - name: Frontend Image Build and push
         uses: docker/build-push-action@v5
-        with: 
+        with:
           context: web/backend
           push: true
           tag: ${{ github.sha }}
           label: "ghcr.io/Tatsumi0000/StarryKids/frontend"
-
