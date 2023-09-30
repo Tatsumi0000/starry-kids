@@ -6,12 +6,13 @@ require_relative 'convert_character_to_image_service'
 
 module StarryKids
   class ConvertImageToMoonService
-    def initialize
-      @convert_character_to_image = StarryKids::ConvertCharacterToImageService.new
+    def initialize(font_size = 80)
+      @convert_character_to_image = StarryKids::ConvertCharacterToImageService.new(font_size)
     end
 
     # 文字→画像→月文字に変換する
     # @param [String] character 月文字にしたい1文字
+    # @return [String] 月文字に変換した文字列
     def call(character)
       # 月文字を入れる配列
       moon_array = []
@@ -40,12 +41,13 @@ module StarryKids
         end
         moon_array << "\n"
       end
-      moon_array.each { |emoji| print emoji }
+      moon_array.join
     end
   end
 end
 
 if $PROGRAM_NAME == __FILE__
   convert_image_to_moon = StarryKids::ConvertImageToMoonService.new
-  convert_image_to_moon.call('ば')
+  moon_string = convert_image_to_moon.call('ば')
+  print moon_string
 end
