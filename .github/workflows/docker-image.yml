@@ -36,7 +36,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # - if: steps.changes.outputs.backend == 'true'
+      - if: steps.changes.outputs.backend == 'true'
       - name: Backend Image Build and push
         uses: docker/build-push-action@v5
         with:
@@ -44,7 +44,7 @@ jobs:
           push: true
           tags: "ghcr.io/tatsumi0000/starry-kids/backend:${{ github.sha }}"
 
-      # - if: steps.changes.outputs.frontend == 'true'
+      - if: steps.changes.outputs.frontend == 'true'
       - name: Frontend Image Build and push
         uses: docker/build-push-action@v5
         with:
