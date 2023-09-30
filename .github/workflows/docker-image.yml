@@ -4,11 +4,7 @@ name: Push Docker image to GitHub Packages
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - "web/backend/Dockerfile"
-      - "web/frontend/Dockerfile"
+
   workflow_dispatch:
 
 jobs:
