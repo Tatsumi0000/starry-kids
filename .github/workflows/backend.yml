@@ -1,0 +1,56 @@
+name: Run Rspec
+
+on:
+  pull_request:
+    
+  push:
+    branches:
+      - master
+    paths:
+      - "web/backend/**"
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend-ci:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ghcr.io/tatsumi0000/starry-kids/backend:latest
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          TZ: Asia/Tokyo
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          path: "web/backend"
+     
+      - uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      
+      - name: Bundl install
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: DB setup
+        run: |
+          bin/rails db:create
+      
+      - name: Run rspec
+        run: bundle exec rspec
+    
