@@ -15,13 +15,14 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+    run:
+      working-directory: web/backend
+
 jobs:
   backend-ci:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: web/backend
-
+    
     container:
       image: ghcr.io/tatsumi0000/starry-kids/backend:latest
     
