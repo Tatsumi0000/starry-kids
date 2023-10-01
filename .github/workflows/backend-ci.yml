@@ -1,4 +1,4 @@
-name: Run Rspec
+name: Run backend-ci
 
 on:
   pull_request:
