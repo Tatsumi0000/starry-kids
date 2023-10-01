@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  backend-ci:
+  frontend-ci:
     runs-on: ubuntu-latest
     defaults:
       run:
