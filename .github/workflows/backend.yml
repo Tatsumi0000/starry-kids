@@ -42,7 +42,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       
-      - name: Bundl install
+      - name: Bundle install
         run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
