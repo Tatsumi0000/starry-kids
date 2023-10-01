@@ -26,7 +26,7 @@ jobs:
       image: ghcr.io/tatsumi0000/starry-kids/backend:latest
       # volumesを設定しないとactions/cacheがコンテナ内を見れない
       volumes:
-        - ./vendor/bundle:/usr/src/app/backend/vendor/bundle
+        - ./:/usr/src/app/backend
 
     services:
       db:
