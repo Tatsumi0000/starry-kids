@@ -1,0 +1,43 @@
+
+name: Run Vitest
+
+on:
+  pull_request:
+
+  push:
+    branches:
+      - master
+    paths:
+      - "web/frontend/**"
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend-ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web/frontend
+ 
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            web/frontend
+
+      - name: npm install
+        run: |
+          npm ci
+
+      - name: Run vitest
+        run: npm run test
