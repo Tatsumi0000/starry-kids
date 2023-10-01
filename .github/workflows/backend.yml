@@ -2,7 +2,7 @@ name: Run Rspec
 
 on:
   pull_request:
-    
+
   push:
     branches:
       - master
@@ -15,17 +15,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-defaults:
-    run:
-      working-directory: web/backend
-
 jobs:
   backend-ci:
     runs-on: ubuntu-latest
-    
+    defaults:
+      run:
+        working-directory: web/backend
+
     container:
       image: ghcr.io/tatsumi0000/starry-kids/backend:latest
-    
+
     services:
       mysql:
         image: mysql:8.0
@@ -39,34 +38,22 @@ jobs:
         with:
           sparse-checkout: |
             web/backend
-     
+
       - uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
-      
-      - name: Debug
-        run: |
-          ls 
-          pwd 
-          cd web
-          ls 
-          cd backend
-          ls 
 
       - name: Bundle install
-        run: | 
-          ls
-          pwd
+        run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
       - name: DB setup
         run: |
           bin/rails db:create
-      
+
       - name: Run rspec
         run: bundle exec rspec
-    
