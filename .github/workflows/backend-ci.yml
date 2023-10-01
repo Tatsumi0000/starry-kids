@@ -50,11 +50,7 @@ jobs:
       - name: Bundle install
         run: |
           bundle install --jobs 4 --retry 3
-          ls 
-          pwd 
-          cd vendor/bundle 
-          ls 
-          pwd
+       
 
       - name: DB setup
         run: |
