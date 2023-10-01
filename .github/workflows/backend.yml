@@ -26,8 +26,8 @@ jobs:
       image: ghcr.io/tatsumi0000/starry-kids/backend:latest
 
     services:
-      mysql:
-        image: mysql:8.0
+      db:
+        image: mysql:8.1.0
         env:
           TZ: Asia/Tokyo
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
