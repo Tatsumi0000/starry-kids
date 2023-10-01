@@ -4,8 +4,7 @@ name: Push Docker image to GitHub Packages
 
 on:
   push:
-    branches:
-      - main
+
     paths:
       - "web/backend/Dockerfile"
       - "web/frontend/Dockerfile"
@@ -21,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - uses: dorny/paths-filter@v2
-        id: filter
+        id: filters
         with:
           filters: |
             backend:
@@ -36,7 +35,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - if: steps.changes.outputs.backend == 'true'
+      - if: ${{ steps.filters.outputs.backend == 'true' }}
         name: Backend Image Build and push
         uses: docker/build-push-action@v5
         with:
@@ -44,7 +43,7 @@ jobs:
           push: true
           tags: "ghcr.io/tatsumi0000/starry-kids/backend:latest"
 
-      - if: steps.changes.outputs.frontend == 'true'
+      - if: ${{ steps.filters.outputs.frontend == 'true' }}
         name: Frontend Image Build and push
         uses: docker/build-push-action@v5
         with:

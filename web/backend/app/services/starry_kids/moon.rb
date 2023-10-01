@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'numo/narray'
 
 module StarryKids
@@ -64,7 +66,7 @@ module StarryKids
           '🌗'
         when 6
           '🌖'
-        when 7
+        else
           '🌕'
         end
       end
@@ -72,7 +74,7 @@ module StarryKids
   end
 end
 
-if $0 == __FILE__
+if $PROGRAM_NAME == __FILE__
   moon = StarryKids::Moon
-  p moon.emoji
+  print moon.emoji
 end
