@@ -76,5 +76,5 @@ end
 
 if $PROGRAM_NAME == __FILE__
   moon = StarryKids::Moon
-  Rails.logger.debug moon.emoji
+  print moon.emoji
 end
