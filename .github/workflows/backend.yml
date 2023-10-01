@@ -46,6 +46,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       
+      - name: Debug
+        run: |
+          ls 
+          pwd 
+          cd web
+          ls 
+          cd backend
+          ls 
+
       - name: Bundle install
         run: | 
           ls
