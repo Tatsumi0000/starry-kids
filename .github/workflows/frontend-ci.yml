@@ -1,0 +1,54 @@
+
+name: Run frontend-ci
+
+on:
+  pull_request:
+
+  push:
+    branches:
+      - master
+    paths:
+      - "web/frontend/**"
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  frontend-ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web/frontend
+ 
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            web/frontend
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: npm install
+        run: |
+          npm ci
+
+      - name: Run vitest
+        run: npm run test

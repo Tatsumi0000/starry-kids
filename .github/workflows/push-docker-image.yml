@@ -1,0 +1,53 @@
+
+# CIで使うbackendとfrontendのイメージをCDする
+name: Push Docker image to GitHub Packages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "web/backend/Dockerfile"
+      - "web/frontend/Dockerfile"
+  workflow_dispatch:
+
+jobs:
+  push_to_registry:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            backend:
+              - "web/backend/Dockerfile"
+            frontend:
+              - "web/frontend/Dockerfile"
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - if: steps.changes.outputs.backend == 'true'
+        name: Backend Image Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: web/backend
+          push: true
+          tags: "ghcr.io/tatsumi0000/starry-kids/backend:latest"
+
+      - if: steps.changes.outputs.frontend == 'true'
+        name: Frontend Image Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: web/frontend
+          push: true
+          tags: "ghcr.io/tatsumi0000/starry-kids/frontend:latest"
