@@ -44,6 +44,7 @@ jobs:
       
       - name: Bundle install
         run: |
+          ls 
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
