@@ -24,9 +24,7 @@ jobs:
 
     container:
       image: ghcr.io/tatsumi0000/starry-kids/backend:latest
-      # volumesを設定しないとactions/cacheがコンテナ内を見れない
-      volumes:
-        - ./:${{ github.workspace }}/web/backend
+
 
     services:
       db:
@@ -51,9 +49,9 @@ jobs:
 
       - name: Bundle install
         run: |
-          bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
           ls 
+          pwd 
           cd vendor/bundle 
           ls 
           pwd
