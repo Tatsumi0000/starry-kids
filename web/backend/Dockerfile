@@ -6,4 +6,5 @@ RUN apt update && \
 RUN gem update && \
     bundle config set path vendor/bundle
 
+
 WORKDIR /usr/src/app
