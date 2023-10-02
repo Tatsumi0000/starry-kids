@@ -6,6 +6,7 @@ class V1::TextToMoonsController < ApplicationController
   private
 
   def moon_params
-    params.permit(:text)
+    params[:size] ||= 20
+    params.permit(:text, :size)
   end
 end
