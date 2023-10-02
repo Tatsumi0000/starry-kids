@@ -1,5 +1,6 @@
 # StarryKids
-[![push docker image](https://github.com/Tatsumi0000/starry-kids/actions/workflows/docker-image.yml/badge.svg)](https://github.com/Tatsumi0000/starry-kids/actions/workflows/docker-image.yml)
+
+[![Push Docker image to GitHub Packages](https://github.com/Tatsumi0000/starry-kids/actions/workflows/push-docker-image.yml/badge.svg)](https://github.com/Tatsumi0000/starry-kids/actions/workflows/push-docker-image.yml)
 [![backend ci](https://github.com/Tatsumi0000/starry-kids/actions/workflows/backend-ci.yml/badge.svg)](https://github.com/Tatsumi0000/starry-kids/actions/workflows/backend-ci.yml)
 [![frontend ci](https://github.com/Tatsumi0000/starry-kids/actions/workflows/frontend-ci.yml/badge.svg)](https://github.com/Tatsumi0000/starry-kids/actions/workflows/frontend-ci.yml)
 
