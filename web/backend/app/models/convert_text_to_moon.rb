@@ -4,16 +4,12 @@ class ConvertTextToMoon
   include ActiveModel::Attributes
 
   attribute :text, :string
-  attribute :size, :int
-  
+  attribute :size, :int, default: 20
+
   validates :text, presence: true, length: { minimum: 1, maximum: 20 },
                    format: { with: /\A[a-zA-Z0-9０-９ぁ-んァ-ン゛゜一]+\z/, message: '変換できるのは全角半角英数字、ひらがなカタカナのみです。' }
-
   validates :size, presence: true, length: { minimum: 20, maximum: 100 }
 
- class << self
-
- end
-  private 
-  
+  class << self
+  end
 end
