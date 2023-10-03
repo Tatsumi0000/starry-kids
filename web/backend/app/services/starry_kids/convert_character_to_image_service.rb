@@ -8,8 +8,8 @@ module StarryKids
     def initialize(font_size = 80)
       base_file_path = File.dirname(__FILE__)
       @font_size = font_size
-      @image = MiniMagick::Image.open(File.join(base_file_path, './data/images/dummy.png'))
-      @font_path = File.join(base_file_path, './data/fonts/NotoSansJP-Regular.ttf')
+      @image = MiniMagick::Image.open(File.join(base_file_path, 'data/images/dummy.png'))
+      @font_path = File.join(base_file_path, 'data/fonts/NotoSansJP-Regular.ttf')
     end
 
     # 文字を画像に変換する
