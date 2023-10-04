@@ -1,8 +1,8 @@
 class V1::TextToMoonsController < ApplicationController
   def index
-    @moons = Converter::TextToMoon.call(moon_params[:text], moon_params[:size])
+    @result = Converter::TextToMoon.new(text: moon_params[:text], size: moon_params[:size]).call
     # TODO: ここでバリデーションの結果を良い感じに表示する
-    render json: @moons
+    render json: @result
   end
 
   private
