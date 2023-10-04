@@ -1,7 +1,9 @@
+# テキストから付き文字に変換するAPIのコントローラー
 class V1::TextToMoonsController < ApplicationController
+  before_action :validate_params
+
   def index
-    @result = Converter::TextToMoon.new(text: moon_params[:text], size: moon_params[:size]).call
-    # TODO: ここでバリデーションの結果を良い感じに表示する
+    @result = @text_to_moon.call
     render json: @result
   end
 
@@ -9,5 +11,10 @@ class V1::TextToMoonsController < ApplicationController
 
   def moon_params
     params.permit(:text, :size)
+  end
+
+  def validate_params
+    @text_to_moon = Converter::TextToMoon.new(moon_params)
+    head :bad_request if @text_to_moon.invalid?
   end
 end
