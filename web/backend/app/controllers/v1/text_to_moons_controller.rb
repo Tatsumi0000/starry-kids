@@ -15,6 +15,6 @@ class V1::TextToMoonsController < ApplicationController
 
   def validate_params
     @text_to_moon = Converter::TextToMoon.new(moon_params)
-    head :bad_request if @text_to_moon.invalid?
+    render json: { errors: @text_to_moon.errors }, status: :bad_request if @text_to_moon.invalid?
   end
 end
