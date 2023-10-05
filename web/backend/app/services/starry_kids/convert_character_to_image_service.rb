@@ -45,6 +45,11 @@ module StarryKids
       gray_scale
     end
 
+    # 連続でテキスト→画像にすると文字が重なってしまうのでイメージを開き直す
+    def image_reset
+      @image = MiniMagick::Image.open(Rails.root.join('app/assets/images/dummy.png'))
+    end
+
     # -1 ~ 1.0の範囲に正規化する
     # @param [Array] グレースケール化したピクセルの配列
     # @return [Numo::Float] Numo::Floatの-1~1で正規化したピクセルの配列
