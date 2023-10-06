@@ -2,12 +2,16 @@ name: Run backend-ci
 
 on:
   pull_request:
+    paths:
+      - "web/backend/**"
+      - ".github/**"
 
   push:
     branches:
       - master
     paths:
       - "web/backend/**"
+      - ".github/**"
 
   workflow_dispatch:
 
