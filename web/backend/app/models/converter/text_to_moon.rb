@@ -20,7 +20,7 @@ module Converter
     end
 
     def call
-      font_size = size * 4
+      font_size = size * CONVERT_SIZE
       convert_image_to_moon = StarryKids::ConvertImageToMoonService.new(font_size)
       response = text.chars.map { |char| convert_image_to_moon.call(char) }
       { text:, size:, response: }
