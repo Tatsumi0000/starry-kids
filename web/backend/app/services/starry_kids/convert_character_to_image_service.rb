@@ -2,14 +2,15 @@
 
 require 'mini_magick'
 require 'numo/narray'
+require 'rails'
 
 module StarryKids
   class ConvertCharacterToImageService
     def initialize(font_size = 80)
       base_file_path = File.dirname(__FILE__)
       @font_size = font_size
-      @image = MiniMagick::Image.open(File.join(base_file_path, './data/images/dummy.png'))
-      @font_path = File.join(base_file_path, './data/fonts/NotoSansJP-Regular.ttf')
+      @image = MiniMagick::Image.open(Rails.root.join('app/assets/images/dummy.png'))
+      @font_path = Rails.root.join('app/assets/fonts/NotoSansJP-Regular.ttf')
     end
 
     # 文字を画像に変換する
@@ -42,6 +43,11 @@ module StarryKids
         end
       end
       gray_scale
+    end
+
+    # 連続でテキスト→画像にすると文字が重なってしまうのでイメージを開き直す
+    def image_reset
+      @image = MiniMagick::Image.open(Rails.root.join('app/assets/images/dummy.png'))
     end
 
     # -1 ~ 1.0の範囲に正規化する

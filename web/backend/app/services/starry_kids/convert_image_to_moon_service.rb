@@ -41,6 +41,7 @@ module StarryKids
         end
         moon_array << "\n"
       end
+      @convert_character_to_image.image_reset
       moon_array.join
     end
   end

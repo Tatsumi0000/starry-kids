@@ -31,7 +31,6 @@ RSpec.describe StarryKids::ConvertCharacterToImageService, type: :service do
 
     it '正規化したときに-1 ~ 1.0の範囲になることを確認' do
       normalize = StarryKids::ConvertCharacterToImageService.normalize(gray_scale_pixels)
-      p normalize
       expect(normalize[0, true]).to eq Numo::DFloat.cast([-1.0, -1.0, -1.0, -1.0])
       expect(normalize[1, true]).to eq Numo::DFloat.cast([0, 0, 0, 0])
       expect(normalize[2, true]).to eq Numo::DFloat.cast([-0.9921875, -0.9921875, -0.9921875, -0.9921875])

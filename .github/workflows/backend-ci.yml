@@ -55,10 +55,5 @@ jobs:
         run: |
           bin/rails db:create
 
-      - name: Debug 
-        run: |
-          ruby -v
-          convert -version
-
       - name: Run rspec
         run: bundle exec rspec
