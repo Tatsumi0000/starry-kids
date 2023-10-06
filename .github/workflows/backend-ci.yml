@@ -2,12 +2,16 @@ name: Run backend-ci
 
 on:
   pull_request:
+    paths:
+      - "web/backend/**"
+      - ".github/**"
 
   push:
     branches:
       - main
     paths:
       - "web/backend/**"
+      - ".github/**"
 
   workflow_dispatch:
 
@@ -31,6 +35,11 @@ jobs:
         env:
           TZ: Asia/Tokyo
           MYSQL_ROOT_PASSWORD: password
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
  
     steps:
       - name: Checkout code

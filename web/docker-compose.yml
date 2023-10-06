@@ -15,7 +15,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     working_dir: /usr/src/app/backend
-    command: 'bin/rails s  -b "0.0.0.0"'
+    command: 'bin/rails s -b "0.0.0.0"'
     volumes:
       - ./backend:/usr/src/app/backend
     ports:
