@@ -36,18 +36,20 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - if: ${{ steps.filters.outputs.backend == 'true' }}
-        name: Backend Image Build and push
+            #- if: ${{ steps.filters.outputs.backend == 'true' }}
+      - name: Backend Image Build and push
         uses: docker/build-push-action@v5
         with:
           context: web/backend
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: "ghcr.io/tatsumi0000/starry-kids/backend:latest"
 
-      - if: ${{ steps.filters.outputs.frontend == 'true' }}
-        name: Frontend Image Build and push
+            #- if: ${{ steps.filters.outputs.frontend == 'true' }}
+      - name: Frontend Image Build and push
         uses: docker/build-push-action@v5
         with:
           context: web/frontend
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: "ghcr.io/tatsumi0000/starry-kids/frontend:latest"
