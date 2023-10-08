@@ -19,7 +19,13 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
-
+      
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        
       - uses: dorny/paths-filter@v2
         id: filters
         with:
@@ -41,6 +47,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: web/backend
+          platforms: linux/amd64,linux/arm64
+          provenance: false
           push: true
           tags: "ghcr.io/tatsumi0000/starry-kids/backend:latest"
 
@@ -49,5 +57,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: web/frontend
+          platforms: linux/amd64,linux/arm64
+          provenance: false
           push: true
           tags: "ghcr.io/tatsumi0000/starry-kids/frontend:latest"
