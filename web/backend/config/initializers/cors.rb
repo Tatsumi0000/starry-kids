@@ -7,10 +7,9 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    # TODO: 後で本番と開発で分岐する
-    origins "http://localhost:5173"
+    origins Rails.application.config.x.cors_allowed_origins
 
-    resource "v1",
+    resource "*",
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
