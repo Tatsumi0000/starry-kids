@@ -1,12 +1,17 @@
-import { TextToMoonsRepository } from "../repository/TextToMoonsRepository";
+import {
+  TextToMoonsRepository,
+  TextToMoonsRepositoryImpl,
+} from "../repository/TextToMoonsRepository";
 import { TextToMoonsRequest, TextToMoonsResponse } from "../model/TextToMoons";
 
-interface TextToMoonsUsecase {
+export interface TextToMoonsUsecase {
   getMoons(request: TextToMoonsRequest): Promise<TextToMoonsResponse>;
 }
 
-export default class TextToMoonsUsecaseImpl implements TextToMoonsUsecase {
-  constructor(private repository: TextToMoonsRepository) {}
+export class TextToMoonsUsecaseImpl implements TextToMoonsUsecase {
+  constructor(
+    private repository: TextToMoonsRepository = new TextToMoonsRepositoryImpl(),
+  ) {}
 
   async getMoons(request: TextToMoonsRequest): Promise<TextToMoonsResponse> {
     return await this.repository.getMoons(request);
