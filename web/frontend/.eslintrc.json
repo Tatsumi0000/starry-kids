@@ -1,22 +1,46 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2022": true
   },
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:vue/vue3-essential",
     "prettier"
   ],
   "parser": "vue-eslint-parser",
   "parserOptions": {
-    "ecmaVersion": "latest",
+    "ecmaVersion": 13,
     "parser": "@typescript-eslint/parser",
     "sourceType": "module",
-    "project": "tsconfig.json",
-    "extraFileExtensions": [".vue"]
+    "project": [
+      "./tsconfig.json"
+    ],
+    "extraFileExtensions": [
+      ".vue"
+    ]
   },
-  "plugins": ["@typescript-eslint", "vue"],
-  "rules": {}
+  "plugins": [
+    "@typescript-eslint",
+    "vue"
+  ],
+  "rules": {
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ]
+  }
 }
