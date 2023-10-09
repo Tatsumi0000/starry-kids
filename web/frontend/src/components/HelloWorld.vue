@@ -21,6 +21,7 @@ moons.response.forEach((moon: string) => {
 
 <template>
   <h1>{{ msg }}</h1>
+  <v-text-field></v-text-field>
 
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
