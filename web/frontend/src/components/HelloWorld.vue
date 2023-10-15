@@ -21,10 +21,9 @@ onMounted(async () => {
 });
 </script>
 
-<template>
+<template> 
   <h1>{{ msg }}</h1>
-  <v-btn color="primary">Primary</v-btn>
- 
+  <v-btn color="red"></v-btn>
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
