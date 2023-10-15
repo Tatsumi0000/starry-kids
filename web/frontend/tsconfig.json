@@ -15,10 +15,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "types": [
-      "vuetify"
-    ],
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
