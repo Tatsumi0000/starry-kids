@@ -29,4 +29,12 @@ jobs:
       run: git remote add lolipop ${{ secrets.MC_REPOSITORY_URL }}
 
     - name: deploy
-      run: git push -f lolipop HEAD:master
+      run: |
+        pwd 
+        ls -a
+        git config user.name github-actions
+        git config user.email action@github.com
+        git init 
+        git add .
+        git commit -m "Add"
+        git push -f lolipop HEAD:master
