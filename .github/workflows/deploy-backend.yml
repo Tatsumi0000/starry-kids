@@ -1,0 +1,38 @@
+# https://note.com/mclolipopjp/n/n0e8dace1404b
+name: Deploy Rails
+
+on:
+ push:
+   branches:
+     - main
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - "web/backend/**"
+  #     - ".github/**"
+
+  workflow_dispatch:
+
+jobs:
+ deploy:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          web/backend
+    
+    - name: add SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        name: id_rsa
+        known_hosts: ${{ secrets.KNOWN_HOSTS }}
+    
+    - name: add git remote
+      run: git remote add lolipop ${{ secrets.MC_REPOSITORY_URL }}
+
+    - name: deploy
+      run: git push -f lolipop HEAD:master
