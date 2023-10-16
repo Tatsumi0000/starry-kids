@@ -68,9 +68,9 @@ jobs:
           pwd
       
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: './starry-kids/starry-kids/web/frontend/dist'
+          path: "${{ github.workspace }}/dist"
       
       - name: Deploy to GitHub Pages
         id: deployment
