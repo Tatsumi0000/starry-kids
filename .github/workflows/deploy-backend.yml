@@ -33,9 +33,9 @@ jobs:
         cd web/backend
         pwd 
         ls -a
+        git init
         git config user.name github-actions
         git config user.email action@github.com
-        git init 
         git add .
         git commit -m "Add"
         git push -f lolipop HEAD:master
