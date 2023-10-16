@@ -30,6 +30,7 @@ jobs:
 
     - name: deploy
       run: |
+        cd web/backend
         pwd 
         ls -a
         git config user.name github-actions
