@@ -30,6 +30,10 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web/frontend
+
     steps:
       
       - name: Checkout code
