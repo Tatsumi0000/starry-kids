@@ -23,19 +23,18 @@ jobs:
       with:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         name: id_rsa
-        known_hosts: ${{ secrets.KNOWN_HOSTS }}
-    
-    - name: add git remote
-      run: git remote add lolipop ${{ secrets.MC_REPOSITORY_URL }}
+        known_hosts: ${{ secrets.KNOWN_HOSTS }} 
 
     - name: deploy
       run: |
         cd web/backend
         pwd 
         ls -a
+        git config --global init.defaultBranch master
         git init
         git config user.name github-actions
         git config user.email action@github.com
+        git remote add lolipop ${{ secrets.MC_REPOSITORY_URL }}
         git add .
         git commit -m "Add"
         git push -f lolipop HEAD:master
