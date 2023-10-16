@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vue-tsc && vite build --base=/starry-kids/",
     "preview": "vite preview",
     "test": "vitest",
     "lint": "npx eslint src/**/*.{ts,js,vue} && npx prettier src/**/*.{ts,js,vue} --check",
