@@ -50,6 +50,7 @@ test:
 #
 production:
   <<: *default
-  database: backend_production
-  username: backend
-  password: <%= ENV["BACKEND_DATABASE_PASSWORD"] %>
+  host: <%= Rails.application.credentials.starrykids[:db_host] %>
+  database: <%= Rails.application.credentials.starrykids[:db_name] %>
+  username: <%= Rails.application.credentials.starrykids[:db_username] %>
+  password: <%= Rails.application.credentials.starrykids[:db_password] %>

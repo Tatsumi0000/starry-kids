@@ -1,14 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from "vue";
+import {
+  TextToMoonsUsecaseImpl,
+  TextToMoonsUsecase,
+} from "../features/starrykids/usecase/TextToMoonsUsecase";
+import { TextToMoonsRequest } from "../features/starrykids/model/TextToMoons";
 
-defineProps<{ msg: string }>()
+defineProps<{ msg: string }>();
 
-const count = ref(0)
+const count = ref(0);
+const usecase: TextToMoonsUsecase = new TextToMoonsUsecaseImpl();
+const request: TextToMoonsRequest = { text: "all", size: 20 };
+
+onMounted(async () => {
+  const moons = await usecase.getMoons(request);
+  console.log(moons);
+  moons.response.forEach((moon: string) => {
+    console.log(moon);
+  });
+});
 </script>
 
-<template>
+<template> 
   <h1>{{ msg }}</h1>
-
+  <v-btn color="red"></v-btn>
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
