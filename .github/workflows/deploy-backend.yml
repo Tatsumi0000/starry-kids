@@ -2,15 +2,9 @@
 name: Deploy Rails
 
 on:
- push:
-   branches:
-     - main
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - "web/backend/**"
-  #     - ".github/**"
+  push:
+    branches:
+      - main
 
   workflow_dispatch:
 
