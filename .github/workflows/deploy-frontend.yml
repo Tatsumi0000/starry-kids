@@ -20,6 +20,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
+
 jobs:
   # Single deploy job since we're just deploying
   deploy:
