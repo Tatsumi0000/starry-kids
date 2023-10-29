@@ -4,7 +4,7 @@ RSpec.describe Converter::TextToMoon, type: :model do
   describe '.call' do
     context 'textに半角全角英数字、ひらがなカタカナ以外の文字が含まれているとき' do
       it '漢字を含んでいるのでエラーが発生することを確認' do
-        text_to_moon = Converter::TextToMoon.new(text: '漢字', size: 20)
+        text_to_moon = Converter::TextToMoon.new(text: '漢字', size: 10)
         expect(text_to_moon.valid?).to be false
       end
     end

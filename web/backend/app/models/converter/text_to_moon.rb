@@ -11,9 +11,9 @@ module Converter
     attribute :size, :integer, default: 10
 
     validates :text, presence: true
-    validates :text, length: { minimum: 1, maximum: 10 }
+    validates :text, length: { minimum: 1, maximum: 20 }
     validates :text, format: { with: /\A[ぁ-んァ-ンa-zA-Z0-9ー０-９Ａ-Ｚａ-ｚ 　]+\z/, message: '変換できるのは全角半角英数字、ひらがなカタカナのみです。' }
-    validates :size, numericality: { only_integer: true, greater_than_or_equal_to: 20, less_than_or_equal_to: 100 }
+    validates :size, numericality: { only_integer: true, greater_than_or_equal_to: 10, less_than_or_equal_to: 100 }
 
     def initialize(params = {})
       super(params)
