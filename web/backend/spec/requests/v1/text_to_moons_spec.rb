@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'V1::TextToMoons', type: :request do
   describe 'GET v1/text_to_moons' do
     let(:headers) { { 'ACCEPT' => 'application/json' } }
-    let(:params) { { text: 'test', size: 10 } }
+    let(:params) { { text: 'test', size: 1 } }
 
     context 'validationに引っかかるリクエストを送る場合' do
       it '400エラーがかえること' do
