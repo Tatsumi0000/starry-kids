@@ -10,7 +10,7 @@ import { computed } from "vue";
 import { ComputedRef } from "vue";
 import { reactive } from "vue";
 
-const size = ref<number>(20);
+const size = ref<number>(10);
 const text = ref<string>("");
 const isValid = ref<boolean>(false);
 const response = ref<string[]>([]);
@@ -37,10 +37,10 @@ const inputNumberOnly = (inputValue: string): boolean | string => {
   const regex = /^[0-9]+$/;
   return regex.test(inputValue) || "数字を入力してください";
 };
-const inputNumber20to100 = (inputValue: string): boolean | string => {
-  // 20 ~ 100の数字のみの入力を許可する
-  const regex = /^[2-9][0-9]$|^100$/;
-  return regex.test(inputValue) || "20 ~ 100の数字を入力してください";
+const inputNumber10to100 = (inputValue: string): boolean | string => {
+  // 10 ~ 100の数字のみの入力を許可する
+  const regex = /^[1-9][0-9]$|^100$/;
+  return regex.test(inputValue) || "10 ~ 100の数字を入力してください";
 };
 
 const inputText1to20 = (inputValue: string): boolean | string => {
@@ -83,9 +83,9 @@ onErrorCaptured((err: Error) => {
               <v-form @submit.prevent v-model="isValid">
                 <v-text-field
                   v-model="size"
-                  :rules="[inputNumberOnly, inputNumber20to100]"
+                  :rules="[inputNumberOnly, inputNumber10to100]"
                   label="月のサイズ"
-                  placeholder="20 ~ 100"
+                  placeholder="10 ~ 100"
                 ></v-text-field>
 
                 <v-text-field
