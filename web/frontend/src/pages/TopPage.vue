@@ -10,7 +10,7 @@ import { computed } from "vue";
 import { ComputedRef } from "vue";
 import { reactive } from "vue";
 
-const size = ref<number>(10);
+const size = ref<number>(15);
 const text = ref<string>("");
 const isValid = ref<boolean>(false);
 const response = ref<string[]>([]);
