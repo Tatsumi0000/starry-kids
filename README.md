@@ -14,5 +14,5 @@
 ## Wthat is this?
 StarryKidsのバックエンド（Rails）とフロントエンド（Vue）、モバイル（Android、iOS）を管理するリポジトリです。
 
-Rails + Vueの開発に興味のある型は[こちらのドキュメント](https://github.com/Tatsumi0000/starry-kids/tree/main/web/README.md)を参考にしてください。
+Rails + Vueの開発に興味のある方は[こちらのドキュメント](https://github.com/Tatsumi0000/starry-kids/tree/main/web/README.md)を参考にしてください。
 モバイル（Android・iOS）はまだないです。
