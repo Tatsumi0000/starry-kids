@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy Vue
 
 on:
   # Runs on pushes targeting the default branch
@@ -64,8 +64,6 @@ jobs:
       - name: build
         run: |
           npm run build
-          ls
-          pwd
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2

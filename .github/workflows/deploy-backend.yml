@@ -28,8 +28,6 @@ jobs:
     - name: deploy
       run: |
         cd web/backend
-        pwd 
-        ls -a
         git config --global init.defaultBranch master
         git init
         git config user.name github-actions
