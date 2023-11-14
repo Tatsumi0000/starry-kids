@@ -9,6 +9,7 @@ import { TextToMoonsRequest } from "../features/starrykids/model/TextToMoons";
 import { computed } from "vue";
 import { ComputedRef } from "vue";
 import { reactive } from "vue";
+import TheFooter from "../components/TheFooter.vue";
 
 const size = ref<number>(15);
 const text = ref<string>("");
@@ -22,6 +23,14 @@ const validateSnackbar = reactive({
   show: false,
   text: "入力内容に不備があります",
 });
+
+const howToUses = ref<string[]>([
+  "入力したテキストを月の絵文字に変換します",
+  "月のサイズは10 ~ 100の数字を入力してください（おすすめは15）",
+  "月文字にしたいテキストは1 ~ 20文字以内にしてください",
+  "ひらがな、カタカナ、全角半角英数字に対応しています",
+  "初回変換時は少し時間がかかります",
+]);
 
 const usecase: TextToMoonsUsecase = new TextToMoonsUsecaseImpl();
 const request: ComputedRef<TextToMoonsRequest> = computed(() => ({
@@ -66,6 +75,7 @@ const copy = () => {
   navigator.clipboard.writeText(moonText.value);
   copySnackbar.show = true;
 };
+
 onErrorCaptured((err: Error) => {
   validateSnackbar.text = err.message;
   validateSnackbar.show = true;
@@ -75,7 +85,19 @@ onErrorCaptured((err: Error) => {
 
 <template>
   <v-app>
-    <v-container fluid>
+    <v-container>
+      <v-row>
+        <v-col class="d-flex justify-center">
+          <v-card width="400" color="primary">
+            <v-card-item>
+              <v-card-title>このサービスについて</v-card-title>
+              <div v-for="howToUse in howToUses" :key="howToUse">
+                {{ howToUse }}
+              </div>
+            </v-card-item>
+          </v-card>
+        </v-col>
+      </v-row>
       <v-row>
         <v-col cols="12" md="6" lg="6">
           <v-sheet class="bg-deep-purple pa-12" rounded>
@@ -116,8 +138,13 @@ onErrorCaptured((err: Error) => {
         </v-col>
       </v-row>
     </v-container>
-    <v-snackbar color="green" v-model="copySnackbar.show"> {{ copySnackbar.text }} </v-snackbar>
-    <v-snackbar color="red" v-model="validateSnackbar.show"> {{ validateSnackbar.text }} </v-snackbar>
+    <v-snackbar color="green" v-model="copySnackbar.show">
+      {{ copySnackbar.text }}
+    </v-snackbar>
+    <v-snackbar color="red" v-model="validateSnackbar.show">
+      {{ validateSnackbar.text }}
+    </v-snackbar>
+    <TheFooter />
   </v-app>
 </template>
 
