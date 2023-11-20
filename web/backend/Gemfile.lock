@@ -245,7 +245,7 @@ GEM
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
-    spring (4.1.1)
+    spring (4.1.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     stringio (3.0.9)
