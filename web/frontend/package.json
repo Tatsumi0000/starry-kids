@@ -12,7 +12,7 @@
     "format": "npx eslint src/**/*.{ts,js,vue} --fix && npx prettier src/**/*.{ts,js,vue} --write"
   },
   "dependencies": {
-    "@mdi/font": "^7.3.67",
+    "@mdi/font": "^7.4.47",
     "@types/qs": "^6.9.11",
     "axios": "^1.6.2",
     "qs": "^6.11.2",
