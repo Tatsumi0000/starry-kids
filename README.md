@@ -6,7 +6,7 @@
 
 [フォント](https://github.com/Tatsumi0000/starry-kids/tree/main/web/backend/app/assets/fonts)に関してはOFLライセンスです。
 
-入力された文字に対して月の絵文字（🌑、🌒、🌓、🌔、🌘、🌗、🌖、🌕）を使って文字に変換するWebアプリケーションです。
+入力された文字に対して月の絵文字（🌑、🌒、🌓、🌔、🌘、🌗、🌖、🌕）を使って文字に変換するWebアプリケーションです。[ブログ](https://blog.aespa.love/introduction-to-starrykids)を書きました。
 
 [試したい方はここからどうぞ！](https://starry-kids.soleil-luminas.com/)
 初回タイミングで月文字に変換するときはバックエンドのコンテナが立ち上がるまで時間がかかるので遅い可能性があります。気長に待ってください。
