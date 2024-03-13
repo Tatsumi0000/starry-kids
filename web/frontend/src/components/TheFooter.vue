@@ -10,7 +10,7 @@ const openWindow = (url: string) => {
 
 <template>
   <v-container>
-    <v-footer app class="bg-indigo-lighten-1 flex-column">
+    <v-footer class="bg-indigo-lighten-1 flex-column">
       <v-btn
         class="ma-2"
         color="primary"
@@ -24,7 +24,8 @@ const openWindow = (url: string) => {
           <v-img :src="icon" height="40" width="40" />
         </v-col>
         <v-col cols="10">
-          Copyright © {{ new Date().getFullYear() }}, Tatsumi0000 All Rights Reserved.
+          Copyright © {{ new Date().getFullYear() }}, Tatsumi0000 All Rights
+          Reserved.
         </v-col>
       </v-row>
     </v-footer>
