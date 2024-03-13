@@ -9,10 +9,9 @@ RUN git clone https://github.com/sstephenson/rbenv.git ~/.rbenv && \
 
 ENV PATH /root/.rbenv/shims:/root/.rbenv/bin:/usr/local/sbin::$PATH
 
-# 公式で3.2.2がないのでとりあえず3.2.2を入れます
-# あとマネクラも3.2.2なので
-RUN rbenv install 3.2.2 && \
-    rbenv global 3.2.2
+# 3.3.0のイメージにdevがないのでrbenvで入れます
+RUN rbenv install 3.3.0 && \
+    rbenv global 3.3.0
 
 RUN gem update && \
     bundle config set path vendor/bundle
