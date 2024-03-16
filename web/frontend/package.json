@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "lint": "npx eslint src/**/*.{ts,js,vue} && npx prettier src/**/*.{ts,js,vue} --check",
-    "format": "npx eslint src/**/*.{ts,js,vue} --fix && npx prettier src/**/*.{ts,js,vue} --write"
+    "fix": "npx eslint src/**/*.{ts,js,vue} --fix && npx prettier src/**/*.{ts,js,vue} --write",
     "upgrade-interactive": "npm-check --update"
   },
   "dependencies": {
