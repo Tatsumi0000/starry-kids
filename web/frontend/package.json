@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test": "vitest",
     "lint": "npx eslint src/**/*.{ts,js,vue} && npx prettier src/**/*.{ts,js,vue} --check",
-    "format": "npx eslint src/**/*.{ts,js,vue} --fix && npx prettier src/**/*.{ts,js,vue} --write"
+    "fix": "npx eslint src/**/*.{ts,js,vue} --fix && npx prettier src/**/*.{ts,js,vue} --write",
+    "upgrade-interactive": "npm-check --update"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
@@ -31,6 +32,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-vue": "^9.22.0",
     "jsdom": "^24.0.0",
+    "npm-check": "^6.0.1",
     "prettier": "^3.2.5",
     "sass": "^1.71.1",
     "typescript": "^5.3.3",
