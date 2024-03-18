@@ -14,9 +14,9 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
-    "@types/qs": "^6.9.11",
+    "@types/qs": "^6.9.12",
     "axios": "^1.6.7",
-    "qs": "^6.11.2",
+    "qs": "^6.12.0",
     "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.3.4",
     "vue-gtag": "^2.0.1",
