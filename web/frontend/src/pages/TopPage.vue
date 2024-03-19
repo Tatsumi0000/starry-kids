@@ -1,25 +1,26 @@
 <script setup lang="ts">
-import { onErrorCaptured } from "vue";
-import { ref } from "vue";
+import { onErrorCaptured, ref, computed, ComputedRef } from "vue";
 import {
   TextToMoonsUsecase,
   TextToMoonsUsecaseImpl,
 } from "../features/starrykids/usecase/TextToMoonsUsecase";
 import { TextToMoonsRequest } from "../features/starrykids/model/TextToMoons";
-import { computed } from "vue";
-import { ComputedRef } from "vue";
-import { reactive } from "vue";
 import TheFooter from "../components/TheFooter.vue";
 
+// リクエストするときのサイズ
 const size = ref<number>(15);
+// textareaのフォントサイズ
+const textareaFontSize = ref<number>(15);
+// textareaのフォントサイズをpxに変換
+const computedTextareaFontSize = computed(() => `${textareaFontSize.value}px`);
 const text = ref<string>("");
 const isValid = ref<boolean>(false);
 const response = ref<string[]>([]);
-const copySnackbar = reactive({
+const copySnackbar = ref({
   show: false,
   text: "コピーしました",
 });
-const validateSnackbar = reactive({
+const validateSnackbar = ref({
   show: false,
   text: "入力内容に不備があります",
 });
@@ -40,7 +41,6 @@ const request: ComputedRef<TextToMoonsRequest> = computed(() => ({
 const moonText: ComputedRef<string> = computed(() => {
   return response.value.join("");
 });
-
 const inputNumberOnly = (inputValue: string): boolean | string => {
   // 数字のみの入力を許可する
   const regex = /^[0-9]+$/;
@@ -73,12 +73,12 @@ const sendRequest = async () => {
 };
 const copy = () => {
   navigator.clipboard.writeText(moonText.value);
-  copySnackbar.show = true;
+  copySnackbar.value.show = true;
 };
 
 onErrorCaptured((err: Error) => {
-  validateSnackbar.text = err.message;
-  validateSnackbar.show = true;
+  validateSnackbar.value.text = err.message;
+  validateSnackbar.value.show = true;
   return false;
 });
 </script>
@@ -134,7 +134,25 @@ onErrorCaptured((err: Error) => {
         </v-col>
         <v-col cols="12" md="6" lg="6">
           <v-btn @click="copy">コピー</v-btn>
-          <v-textarea v-model="moonText" readonly auto-grow />
+          <v-row class="mt-2 ml-1">
+            <v-chip variant="outlined" color="primary" label>
+              テキストサイズ
+            </v-chip>
+            <v-slider
+              v-model="textareaFontSize"
+              :min="5"
+              :max="30"
+              :step="1"
+              thumb-label
+              color="primary"
+            ></v-slider>
+          </v-row>
+          <v-textarea
+            v-model="moonText"
+            readonly
+            auto-grow
+            class="textarea-fontsize"
+          />
         </v-col>
       </v-row>
     </v-container>
@@ -160,5 +178,9 @@ onErrorCaptured((err: Error) => {
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.textarea-fontsize :deep(textarea) {
+  font-size: v-bind(computedTextareaFontSize);
 }
 </style>
