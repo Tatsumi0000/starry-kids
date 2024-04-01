@@ -21,7 +21,7 @@
     "vue": "^3.4.21",
     "vue-gtag": "^2.0.1",
     "vue-router": "^4.3.0",
-    "vuetify": "^3.5.8"
+    "vuetify": "^3.5.13"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.0.0",
