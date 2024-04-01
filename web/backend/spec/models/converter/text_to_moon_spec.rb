@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe Converter::TextToMoon, type: :model do
   describe '.call' do
     context 'textに半角全角英数字、ひらがなカタカナ以外の文字が含まれているとき' do
-      it '漢字を含んでいるのでエラーが発生することを確認' do
+      it 'エラーにならないことを確認' do
         text_to_moon = Converter::TextToMoon.new(text: '漢字', size: 10)
-        expect(text_to_moon.valid?).to be false
+        expect(text_to_moon.valid?).to be true
       end
     end
 
@@ -36,7 +36,13 @@ RSpec.describe Converter::TextToMoon, type: :model do
         expect(response[:text]).to eq 'ＡＢＣＤＥ１２３４５'
         expect(response[:size]).to eq 10
       end
-
     end
+    context 'textに日本語以外（韓国語）を含んでいるとき' do
+      it 'エラーにならないことを確認' do
+        text_to_moon = Converter::TextToMoon.new(text: '안녕하세요', size: 10)
+        expect(text_to_moon.valid?).to be true
+      end
+    end
+
   end
 end
