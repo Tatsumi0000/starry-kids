@@ -18,7 +18,7 @@ const convertTextTiImage = () => {
     ctx.measureText(props.text).actualBoundingBoxAscent +
     ctx.measureText(props.text).actualBoundingBoxDescent;
 
-  canvas.width = ctx.measureText(props.text.split("\n")[0]).width;
+  canvas.width = ctx.measureText(lines[0]).width;
   canvas.height = lineHeight * lines.length;
 
   // canvas要素では改行を認識してくれないので「/n」で分割して1行ずつ描画
