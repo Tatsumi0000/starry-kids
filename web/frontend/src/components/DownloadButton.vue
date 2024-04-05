@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
+import { event } from "vue-gtag";
 
 const props = defineProps<{
   text: string;
@@ -7,6 +8,7 @@ const props = defineProps<{
   disabled: boolean;
 }>();
 const convertTextTiImage = () => {
+  event("download_moon_to_image", { event_category: "button" });
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d")!;
   // 改行コードで分割
@@ -35,7 +37,7 @@ const convertTextTiImage = () => {
 </script>
 
 <template>
-  <v-btn :disabled="disabled" @click="convertTextTiImage">画像に変換</v-btn>
+  <v-btn :disabled="disabled" @click="convertTextTiImage">ダウンロード</v-btn>
 </template>
 
 <style scoped></style>

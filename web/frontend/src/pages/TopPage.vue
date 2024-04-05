@@ -7,6 +7,7 @@ import {
 import { TextToMoonsRequest } from "../features/starrykids/model/TextToMoons";
 import TheFooter from "../components/TheFooter.vue";
 import DownloadButton from "../components/DownloadButton.vue";
+import { event } from "vue-gtag";
 
 // リクエストするときのサイズ
 const size = ref<number>(15);
@@ -63,6 +64,7 @@ const sendRequest = async () => {
     try {
       const result = await usecase.getMoons(request.value);
       response.value = result.response;
+      event("convert_text_to_moon", { event_category: "button" });
     } catch (error) {
       // if (error instanceof Error) throw new Error(error.message);
       throw new Error("不明なエラーが発生しました");
@@ -74,6 +76,7 @@ const sendRequest = async () => {
 const copy = () => {
   navigator.clipboard.writeText(moonText.value);
   copySnackbar.value.show = true;
+  event("copy_moon", { event_category: "button" });
 };
 
 onErrorCaptured((err: Error) => {
