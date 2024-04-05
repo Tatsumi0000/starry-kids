@@ -6,6 +6,7 @@ import {
 } from "../features/starrykids/usecase/TextToMoonsUsecase";
 import { TextToMoonsRequest } from "../features/starrykids/model/TextToMoons";
 import TheFooter from "../components/TheFooter.vue";
+import DownloadButton from "../components/DownloadButton.vue";
 
 // リクエストするときのサイズ
 const size = ref<number>(15);
@@ -132,7 +133,15 @@ onErrorCaptured((err: Error) => {
           </v-sheet>
         </v-col>
         <v-col cols="12" md="6" lg="6">
-          <v-btn @click="copy">コピー</v-btn>
+          <v-row class="mt-2 ml-1 mb-2">
+            <v-btn @click="copy">コピー</v-btn>
+            <DownloadButton
+              class="ml-2"
+              :text="moonText"
+              :size="textareaFontSize"
+              :disabled="moonText.length === 0"
+            />
+          </v-row>
           <v-row class="mt-2 ml-1">
             <v-chip variant="outlined" color="primary" label>
               テキストサイズ
