@@ -26,6 +26,14 @@ spec:
             - "s"
             - "-b"
             - "0.0.0.0"
+          volumeMounts:
+            - name: backend
+              mountPath: /usr/src/app/backend
+          volumes:
+            - name: backend
+              hostPath:
+                path: ../../../backend
+                type: Directory
         - name: db
           image: mysql:8.1.0
           ports:
@@ -34,6 +42,14 @@ spec:
             limits:
               cpu: "250m"
               memory: "769Mi"
+          volumeMounts:
+            - name: db
+              mountPath: /var/lib/mysql
+          volumes:
+            - name: db
+              hostPath:
+                path: db_data
+                type: Directory
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "password"
