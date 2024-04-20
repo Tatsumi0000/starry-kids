@@ -6,4 +6,5 @@ RUN npm install -g npm
 
 WORKDIR /usr/src/app
 
+COPY . /usr/src/app
 RUN npm install
