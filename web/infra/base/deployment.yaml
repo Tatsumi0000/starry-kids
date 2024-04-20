@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: starry-kids
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: starry-kids
+  template:
+    metadata:
+      labels:
+        app: starry-kids
+    spec:
+      containers:
+        - name: frontend
+          image: frontend-image
+          ports:
+            - containerPort: 5173
+          resources:
+            limits:
+              memory: "64Mi"
+              cpu: "250m"
+          command: 
+            - "npm"
+            - "run"
+            - "dev"
