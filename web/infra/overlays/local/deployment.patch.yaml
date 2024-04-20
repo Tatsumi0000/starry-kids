@@ -29,9 +29,6 @@ spec:
             - "s"
             - "-b"
             - "0.0.0.0"
-          volumeMounts:
-            - name: backend
-              mountPath: /usr/src/app/backend
         - name: db
           image: mysql:8.1.0
           ports:
@@ -47,8 +44,4 @@ spec:
         - name: db
           hostPath:
             path: db_data
-            type: Directory
-        - name: backend
-          hostPath:
-            path: ../../../backend
             type: Directory
