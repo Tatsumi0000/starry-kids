@@ -25,3 +25,11 @@ spec:
             - "npm"
             - "run"
             - "dev"
+          volumeMounts:
+            - name: frontend
+              mountPath: /usr/src/app/frontend
+          volumes:
+            - name: frontend
+              hostPath:
+                path: ../../../frontend
+                type: Directory
