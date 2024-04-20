@@ -28,8 +28,8 @@ spec:
           volumeMounts:
             - name: frontend
               mountPath: /usr/src/app/frontend
-          volumes:
-            - name: frontend
-              hostPath:
-                path: ../../../frontend
-                type: Directory
+      volumes:
+        - name: frontend
+          hostPath:
+            path: ../../../frontend
+            type: Directory
