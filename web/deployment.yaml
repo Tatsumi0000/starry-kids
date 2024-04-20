@@ -31,5 +31,5 @@ spec:
       volumes:
         - name: frontend
           hostPath:
-            path: ../../../frontend
+            path: ../../frontend
             type: Directory
