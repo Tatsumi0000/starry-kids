@@ -5,3 +5,5 @@ RUN apt update && \
 RUN npm install -g npm
 
 WORKDIR /usr/src/app
+
+RUN npm install
