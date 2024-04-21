@@ -1,16 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: starry-kids
   name: starry-kids
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: starry-kids
+      app: backend
   template:
     metadata:
       labels:
-        app: starry-kids
+        app: backend
     spec:
       containers:
         - name: backend
@@ -43,5 +44,5 @@ spec:
       volumes:
         - name: db
           hostPath:
-            path: db_data
-            type: Directory
+            path: /db_data
+            type: DirectoryOrCreate
