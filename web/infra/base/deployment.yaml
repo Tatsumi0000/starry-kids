@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: starry-kids
-  name: starry-kids
+  name: frontend
 spec:
   replicas: 1
   selector:
@@ -20,9 +20,9 @@ spec:
             - containerPort: 5173
           resources:
             limits:
-              memory: "64Mi"
+              memory: "128Mi"
               cpu: "250m"
-          command: 
+          command:
             - "npm"
             - "run"
             - "dev"
