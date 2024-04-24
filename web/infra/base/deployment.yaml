@@ -2,16 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: starry-kids
-  name: frontend
+  name: web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: web
   template:
     metadata:
       labels:
-        app: frontend
+        app: web
     spec:
       containers:
         - name: frontend
