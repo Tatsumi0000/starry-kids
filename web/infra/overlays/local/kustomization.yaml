@@ -7,3 +7,8 @@ resources:
 
 patches:
   - path: deployment.patch.yaml
+
+configMapGenerator:
+  - name: db-config
+    envs:
+      - config/.env
