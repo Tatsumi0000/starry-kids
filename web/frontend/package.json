@@ -20,7 +20,7 @@
     "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.4.23",
     "vue-gtag": "^2.0.1",
-    "vue-router": "^4.3.0",
+    "vue-router": "^4.3.2",
     "vuetify": "^3.5.15"
   },
   "devDependencies": {
