@@ -1,9 +1,10 @@
-import { defineConfig, mergeConfig } from "vitest/config";
-import viteConfig from "./vite.config";
+import { defineConfig } from "vitest/config";
+import { fileURLToPath, URL } from "node:url";
+import vue from "@vitejs/plugin-vue";
+import vuetify from "vite-plugin-vuetify";
 
-export default mergeConfig(
-  viteConfig,
-  defineConfig({
+export default defineConfig({
+    plugins: [vue(), vuetify({ autoImport: true })],
     test: {
       globals: true,
       environment: "jsdom",
@@ -13,5 +14,9 @@ export default mergeConfig(
         },
       },
     },
-  }),
-);
+    resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+});
