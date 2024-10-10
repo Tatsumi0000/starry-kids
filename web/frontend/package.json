@@ -17,7 +17,7 @@
     "@types/qs": "^6.9.15",
     "axios": "^1.7.7",
     "qs": "^6.13.0",
-    "vite-plugin-vuetify": "^2.0.3",
+    "vite-plugin-vuetify": "^2.0.4",
     "vue": "^3.4.38",
     "vue-gtag": "^2.0.1",
     "vue-router": "^4.4.0",
