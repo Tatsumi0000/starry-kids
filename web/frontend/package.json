@@ -35,7 +35,7 @@
     "npm-check": "^6.0.1",
     "prettier": "^3.3.3",
     "sass": "^1.79.4",
-    "typescript": "^5.5.4",
+    "typescript": "^5.6.3",
     "vite": "^5.4.8",
     "vitest": "^2.1.2",
     "vue-tsc": "^2.1.6"
