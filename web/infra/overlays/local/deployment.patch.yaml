@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: starry-kids
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/tatsumi0000/starry-kids/backend:latest
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: MYSQL_ROOT_PASSWORD
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: "250m"
+              memory: "769Mi"
+          command:
+            - "bundle exec db:prepare"
+            - "bin/rails"
+            - "s"
+            - "-b"
+            - "0.0.0.0"
+        - name: db
+          image: mysql:8.1.0
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: MYSQL_ROOT_PASSWORD
+          ports:
+            - containerPort: 3306
+          resources:
+            limits:
+              cpu: "250m"
+              memory: "769Mi"
+          volumeMounts:
+            - name: db
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: db
+          hostPath:
+            path: /db_data
+            type: DirectoryOrCreate
