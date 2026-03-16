@@ -16,5 +16,6 @@ RUN rbenv install 3.3.0 && \
 RUN gem update && \
     bundle config set path vendor/bundle
 
-
 WORKDIR /usr/src/app
+COPY . /usr/src/app
+RUN bundle install
